@@ -4,8 +4,12 @@ from application.feature_file_parser.parse_feature_files import get_feature, get
 
 
 def test_get_feature_from_file():
-    feature = get_feature('test.feature')
-    assert_that(feature, equal_to('Feature: Login into social network'))
+    expected_feature = 'Feature: Login into social network'
+    with open('test.feature') as file:
+        file_lines = file.readlines()
+
+    feature = get_feature(file_lines)
+    assert_that(feature, equal_to(expected_feature))
 
 
 def test_get_scenarios():
@@ -21,11 +25,11 @@ def test_get_scenarios():
                           'And try to login\n' \
                           'Then I cannot see my beatiful picture\n' \
                           'And I get an error message\n'
-
     with open('test.feature') as file:
         file_lines = file.readlines()
-        scenarios = get_scenarios(file_lines)
 
-        assert_that(scenarios, has_length(2))
-        assert_that(scenarios[0], equal_to(expected_scenario_1))
-        assert_that(scenarios[1], equal_to(expected_scenario_2))
+    scenarios = get_scenarios(file_lines)
+
+    assert_that(scenarios, has_length(2))
+    assert_that(scenarios[0], equal_to(expected_scenario_1))
+    assert_that(scenarios[1], equal_to(expected_scenario_2))

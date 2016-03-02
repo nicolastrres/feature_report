@@ -1,9 +1,8 @@
-def get_feature(feature_file_path):
+def get_feature(file_lines):
     feature_label = 'Feature:'
-    with open(feature_file_path) as file:
-        for line in file:
-            if feature_label in line:
-                return line[:-1]
+    for line in file_lines:
+        if feature_label in line:
+            return line[:-1]
 
 
 def get_scenarios(file_lines):
