@@ -6,6 +6,13 @@ Feature: Login into social network
 
   Scenario: Login with valid credentials
     Given I access to the social network home page
-    When I enter my my email and password and login
+    When I enter my email and password and login
     Then I can see my beatiful picture
     And I can see a welcome message
+
+  Scenario: Not possible to login with invalid credentials
+    Given I have invalid credentials
+    When I enter my email and password
+    And try to login
+    Then I cannot see my beatiful picture
+    And I get an error message
