@@ -9,12 +9,21 @@ def get_feature(feature_file_path):
 def get_scenarios(file_lines):
     scenario_label = 'Scenario:'
     file_lines = _remove_spaces_in_lines(file_lines)
-    scenarios_start_line_number = _get_first_line_number_of_each_scenario(file_lines, scenario_label)
+    scenarios_start_line_number = _get_first_line_number_of_each_scenario(
+        file_lines,
+        scenario_label
+    )
 
     scenarios = []
     for index, start_line_number in enumerate(scenarios_start_line_number):
         if is_not_last_scenario(index, scenarios_start_line_number):
-            scenarios.append(_get_string_scenario(file_lines, start_line_number, scenarios_start_line_number[index+1]))
+            scenarios.append(
+                _get_string_scenario(
+                    file_lines,
+                    start_line_number,
+                    scenarios_start_line_number[index + 1]
+                )
+            )
         else:
             scenarios.append(_get_string_scenario(file_lines, start_line_number))
     return scenarios
