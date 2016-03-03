@@ -1,11 +1,11 @@
 from hamcrest import assert_that, equal_to, has_length
 
-from application.feature_file_parser.parse_feature_files import get_feature, get_scenarios
+from feature_file_parser.parse_feature_files import get_feature, get_scenarios
 
 
 def test_get_feature_from_file():
     expected_feature = 'Feature: Login into social network'
-    with open('test.feature') as file:
+    with open('tests/test.feature') as file:
         file_lines = file.readlines()
 
     feature = get_feature(file_lines)
@@ -25,7 +25,7 @@ def test_get_scenarios():
                           'And try to login\n' \
                           'Then I cannot see my beatiful picture\n' \
                           'And I get an error message\n'
-    with open('test.feature') as file:
+    with open('tests/test.feature') as file:
         file_lines = file.readlines()
 
     scenarios = get_scenarios(file_lines)
