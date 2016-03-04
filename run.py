@@ -11,7 +11,8 @@ def index():
     with open(test_file) as file:
         lines = file.readlines()
         feature = parse_feature_files.get_feature(lines)
-    return render_template('index.html', feature=feature)
+        scenarios = parse_feature_files.get_scenarios(lines)
+    return render_template('index.html', feature=feature, scenarios=scenarios)
 
 
 if __name__ == '__main__':
