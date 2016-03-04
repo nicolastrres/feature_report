@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Features Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
@@ -15,8 +17,11 @@
 
 <body>
     <h1>Features Report</h1>
-    <div class="pure-g">
-        <h2 class="pure-u-1 pure-u-md-1-5">{{ feature }}</h2>
+    <div class="pure-menu pure-g">
+        <span class="pure-menu-heading pure-u-1">Features</span>
+        <ul class="pure-menu-list pure-u-1 pure-u-md-1-5">
+            <li class="pure-menu-item pure-u-1 pure-u-md-1-5"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
+        </ul>
         <h3 class="pure-u-1 pure-u-md-4-5">{{ scenarios }}</h3>
     </div>
 
