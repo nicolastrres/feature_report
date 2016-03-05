@@ -2,6 +2,11 @@ from paver.easy import task, sh, call_task
 
 
 @task
+def run_server():
+    sh('python3 run.py')
+
+
+@task
 def test_and_code_style():
     call_task('flake8')
     call_task('unit_test')
