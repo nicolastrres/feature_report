@@ -1,4 +1,5 @@
 flake8==2.5.4
 flask==0.10.1
 nose==1.3.7
+paver==1.2.4
 pyhamcrest==1.8.5
