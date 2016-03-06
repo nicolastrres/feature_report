@@ -3,12 +3,21 @@ html, body, #layout {
 }
 
 
-h1.title {
-    text-align: center;
-    margin: 0;
-    padding: 10px 0;
+.header {
     background-color: #1fa3ff;
     color: #FFF;
+    padding: 10px 0;
+}
+
+h1.title {
+    display: inline-block;
+    margin: 0 0 0 2%;
+    font-family: 'Dancing Script', cursive;
+}
+
+.import-button {
+    float: right;
+    margin-right: 8%;
 }
 
 .feature-left-side-nav {
@@ -17,3 +26,4 @@ h1.title {
     width: 22%;
     display: inline-block;
 }
+
