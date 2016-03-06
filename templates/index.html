@@ -16,14 +16,21 @@
 </head>
 
 <body>
-    <h1>Features Report</h1>
-    <div class="pure-menu pure-g">
-        <span class="pure-menu-heading pure-u-1">Features</span>
-        <ul class="pure-menu-list pure-u-1 pure-u-md-1-5">
-            <li class="pure-menu-item pure-u-1 pure-u-md-1-5"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
+<h1>Features Report</h1>
+
+<div class="main-body">
+    <div class="pure-menu feature-left-side-nav pure-u-1 pure-u-md-1-5">
+        <div class="pure-menu-heading">Features</div>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
         </ul>
-        <h3 class="pure-u-1 pure-u-md-4-5">{{ scenarios }}</h3>
     </div>
+    <div class="scenario-right-side pure-u-1 pure-u-md-3-5">
+        <ul class="pure-menu-list">
+            <h3 class="class">{{ scenarios }}</h3>
+        </ul>
+    </div>
+</div>
 
 </body>
 </html>
