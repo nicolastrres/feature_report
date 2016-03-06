@@ -1,5 +1,13 @@
+html, body, #layout {
+    height: 100%;
+}
 
-.feature-side-nav {
-    background-color: #191809;
-    color: white;
+
+h1.title {
+    text-align: center;
+}
+
+.feature-left-side-nav {
+    background-color: #191818;
+    height: 100%;
 }
