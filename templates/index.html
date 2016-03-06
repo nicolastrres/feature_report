@@ -26,9 +26,11 @@
         </ul>
     </div>
     <div class="scenario-right-side pure-u-1 pure-u-md-3-5">
-        <ul class="pure-menu-list">
-            <h3 class="class">{{ scenarios }}</h3>
-        </ul>
+        {% for scenario in scenarios%}
+            <ul class="pure-menu-list">
+                <h3 class="class">{{ scenario }}</h3>
+            </ul>
+        {% endfor %}
     </div>
 </div>
 
