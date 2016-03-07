@@ -21,7 +21,10 @@
 
     <div class="header">
         <h1 class="title">Features Report</h1>
-        <button class="primary-button pure-button import-button" disabled>Import..</button>
+        <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+            <input type=file name=feature_file>
+            <input type=submit value="Submit">
+        </form>
     </div>
     <div class="pure-menu feature-left-side-nav">
         <div class="pure-menu-heading">Features</div>
