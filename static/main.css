@@ -15,6 +15,11 @@ h1.title {
     font-family: 'Dancing Script', cursive;
 }
 
+h1.title a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 .import-button {
     float: right;
     margin-right: 8%;
