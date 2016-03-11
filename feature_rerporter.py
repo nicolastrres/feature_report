@@ -8,15 +8,14 @@ from feature_file_parser import parse_feature_files
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def index():
-    if request.method == 'GET':
-        test_file = 'tests/test.feature'
-        with open(test_file) as file:
-            lines = file.readlines()
-            feature = parse_feature_files.get_feature(lines)
-            scenarios = parse_feature_files.get_scenarios(lines)
-        return render_template('index.html', feature=feature, scenarios=scenarios)
+    test_file = 'tests/test.feature'
+    with open(test_file) as file:
+        lines = file.readlines()
+        feature = parse_feature_files.get_feature(lines)
+        scenarios = parse_feature_files.get_scenarios(lines)
+    return render_template('index.html', feature=feature, scenarios=scenarios)
 
 
 @app.route('/upload', methods=['POST'])
