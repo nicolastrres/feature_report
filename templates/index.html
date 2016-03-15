@@ -26,14 +26,14 @@
             <input id="file" type="file" name="feature_file">
         </form>
     </div>
-    <div class="pure-menu feature-left-side-nav">
+    <div class="pure-menu feature-left-side-nav" id="features_nav">
         <div class="pure-menu-heading">Features</div>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
         </ul>
     </div>
 
-    <div class="scenario-right-side pure-u-1 pure-u-md-3-5">
+    <div class="scenario-right-side pure-u-1 pure-u-md-3-5" id="scenarios">
         {% for scenario in scenarios%}
             <ul class="pure-menu-list">
                 <p class="class">{{ scenario }}</p>
