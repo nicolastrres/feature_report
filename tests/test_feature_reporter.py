@@ -1,12 +1,12 @@
+import io
 import unittest
 
-from hamcrest import assert_that
+from hamcrest import assert_that, equal_to
 
 import feature_rerporter
 
 
 class FeatureReporterTestCase(unittest.TestCase):
-
     def setUp(self):
         self.app = feature_rerporter.app.test_client()
 
@@ -14,3 +14,20 @@ class FeatureReporterTestCase(unittest.TestCase):
         rv = self.app.get('/')
         assert_that('Feature: Login into social network' in str(rv.data))
         assert_that('Scenario: Login with valid credential')
+
+    def test_upload_feature(self):
+        lines = b'Feature: Login into social network \
+                As an User\
+                I want to be able to login\
+                So I can share my personal information with my friends (FBI, NSA, and US government\
+                Scenario: Login with valid credentials\
+                Given I access to the social network home page\
+                When I enter my email and password and login\
+                Then I can see my beatiful picture\
+                And I can see a welcome message'
+        file = (io.BytesIO(lines), 'my_feature_test.feature')
+
+        rv = self.app.post('/upload', data=dict(feature_file=file), follow_redirects=True)
+
+        assert_that(rv.status_code, equal_to(200))
+        assert_that('Feature: Login into social network' in str(rv.data))
