@@ -1,4 +1,3 @@
-
 Feature: Login into social network
   As an User
   I want to be able to login
