@@ -1,8 +1,25 @@
+import re
+from jinja2 import evalcontextfilter, Markup, escape
 from flask import Flask, render_template, request
 
 from feature_file_parser import parse_feature_files
 
+
+ALLOWED_EXTENSIONS = {'feature', 'txt'}
+_paragraph_re = re.compile(r'(?:\r\n|\r|\n){2,}')
+
+
+@evalcontextfilter
+def nl2br(eval_ctx, value):
+    result = u'\n\n'.join(u'<p>%s</p>' % p.replace('\n', Markup('<br>\n'))
+                          for p in _paragraph_re.split(escape(value)))
+    if eval_ctx.autoescape:
+        result = Markup(result)
+    return result
+
+
 app = Flask(__name__)
+app.jinja_env.filters['nl2br'] = nl2br
 
 
 @app.route('/', methods=['GET'])
@@ -29,9 +46,6 @@ def upload():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
-
-
-ALLOWED_EXTENSIONS = {'feature', 'txt'}
 
 
 if __name__ == '__main__':

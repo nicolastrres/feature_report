@@ -12,6 +12,8 @@ class FeatureReporterTestCase(unittest.TestCase):
 
     def test_get_feature_by_default(self):
         rv = self.app.get('/')
+
+        assert_that(200, rv.status_code)
         assert_that('Feature: Login into social network' in str(rv.data))
         assert_that('Scenario: Login with valid credential')
 
