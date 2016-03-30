@@ -2,6 +2,10 @@ html, body, #layout {
     height: 100%;
 }
 
+#upload_form {
+    float: right;
+    margin-top: 1%;
+}
 
 .header {
     background-color: #1fa3ff;
@@ -32,3 +36,6 @@ h1.title a {
     display: inline-block;
 }
 
+#scenarios ul {
+    padding-left: 3%;
+}
