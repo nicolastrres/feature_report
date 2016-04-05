@@ -3,7 +3,7 @@ from paver.easy import task, sh, call_task
 
 @task
 def run_server():
-    sh('python3 feature_rerporter.py')
+    sh('python3 feature_reporter.py')
 
 
 @task

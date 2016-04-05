@@ -3,12 +3,12 @@ import unittest
 
 from hamcrest import assert_that, equal_to
 
-import feature_rerporter
+import feature_reporter
 
 
 class FeatureReporterTestCase(unittest.TestCase):
     def setUp(self):
-        self.app = feature_rerporter.app.test_client()
+        self.app = feature_reporter.app.test_client()
 
     def test_get_feature_by_default(self):
         rv = self.app.get('/')
