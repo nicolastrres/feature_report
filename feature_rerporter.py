@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 from feature_file_parser import parse_feature_files
 
 
-ALLOWED_EXTENSIONS = {'feature', 'txt'}
+ALLOWED_EXTENSIONS = {'feature'}
 _paragraph_re = re.compile(r'(?:\r\n|\r|\n){2,}')
 
 
@@ -41,6 +41,19 @@ def upload():
             feature = parse_feature_files.get_feature(lines)
             scenarios = parse_feature_files.get_scenarios(lines)
             return render_template('index.html', feature=feature, scenarios=scenarios)
+        else:
+            # TODO: Do we really need to upload a file? can we use a harcoded file and only update when the user
+            # upload a real file?
+            test_file = 'tests/test.feature'
+            with open(test_file) as file:
+                lines = file.readlines()
+                feature = parse_feature_files.get_feature(lines)
+                scenarios = parse_feature_files.get_scenarios(lines)
+            return render_template(
+                'index.html',
+                feature=feature,
+                scenarios=scenarios,
+                error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
 
 
 def allowed_file(filename):

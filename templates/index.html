@@ -21,10 +21,15 @@
 <div id="layout">
 
     <div class="header">
-        <h1 class="title"><a href="/">Features Report</a></h1>
+        <h1 class="title"><a href="/" class="link-no-decoration">Features Report</a></h1>
         <form id="upload_form" method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
             <input id="file" type="file" name="feature_file">
         </form>
+    </div>
+    <div class="error">
+        {% if error %}
+            <h2 class="error-message"><a href="/" class="link-no-decoration">{{ error}}</a></h2>
+        {% endif %}
     </div>
     <div class="pure-menu feature-left-side-nav" id="features_nav">
         <div class="pure-menu-heading">Features</div>
