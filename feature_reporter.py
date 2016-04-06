@@ -20,6 +20,7 @@ def nl2br(eval_ctx, value):
 
 app = Flask(__name__)
 app.jinja_env.filters['nl2br'] = nl2br
+app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 
 
 @app.route('/', methods=['GET'])
