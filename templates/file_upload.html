@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Features Report</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <!--[if lte IE 8]>
@@ -22,44 +22,29 @@
 
     <div class="header">
         <h1 class="title"><a href="/" class="link-no-decoration">Features Report</a></h1>
-
         <form id="upload_form" method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
             <input id="file" type="file" name="feature_file">
         </form>
     </div>
     <div class="error">
         {% if error %}
-        <h2 class="error-message"><a href="/" class="link-no-decoration">{{ error}}</a></h2>
+            <h2 class="error-message"><a href="/" class="link-no-decoration">{{ error}}</a></h2>
         {% endif %}
     </div>
     <div class="pure-menu feature-left-side-nav" id="features_nav">
         <div class="pure-menu-heading">Features</div>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Feature: Login into social network</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
         </ul>
     </div>
 
     <div class="scenario-right-side pure-u-1 pure-u-md-3-5" id="scenarios">
-        <ul class="pure-menu-list">
-            <p>Scenario: Login with valid credentials<br>
-                Given I access to the social network home page<br>
-                When I enter my email and password and login<br>
-                Then I can see my beatiful picture<br>
-                And I can see a welcome message
-            </p>
-            <hr>
-        </ul>
-
-        <ul class="pure-menu-list">
-            <p>Scenario: Not possible to login with invalid credentials<br>
-                Given I have invalid credentials<br>
-                When I enter my email and password<br>
-                And try to login<br>
-                Then I cannot see my beatiful picture<br>
-                And I get an error message<br>
-            </p>
-            <hr>
-        </ul>
+        {% for scenario in scenarios%}
+            <ul class="pure-menu-list">
+                {{ scenario | nl2br }}
+                <hr/>
+            </ul>
+        {% endfor %}
     </div>
 </div>
 

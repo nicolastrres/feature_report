@@ -24,12 +24,7 @@ app.jinja_env.filters['nl2br'] = nl2br
 
 @app.route('/', methods=['GET'])
 def index():
-    test_file = 'tests/test.feature'
-    with open(test_file) as file:
-        lines = file.readlines()
-        feature = parse_feature_files.get_feature(lines)
-        scenarios = parse_feature_files.get_scenarios(lines)
-    return render_template('index.html', feature=feature, scenarios=scenarios)
+    return render_template('index.html')
 
 
 @app.route('/upload', methods=['POST'])
@@ -40,19 +35,10 @@ def upload():
             lines = [line.decode('utf-8') for line in file.readlines()]
             feature = parse_feature_files.get_feature(lines)
             scenarios = parse_feature_files.get_scenarios(lines)
-            return render_template('index.html', feature=feature, scenarios=scenarios)
+            return render_template('file_upload.html', feature=feature, scenarios=scenarios)
         else:
-            # TODO: Do we really need to upload a file? can we use a harcoded file and only update when the user
-            # upload a real file?
-            test_file = 'tests/test.feature'
-            with open(test_file) as file:
-                lines = file.readlines()
-                feature = parse_feature_files.get_feature(lines)
-                scenarios = parse_feature_files.get_scenarios(lines)
             return render_template(
                 'index.html',
-                feature=feature,
-                scenarios=scenarios,
                 error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
 
 
