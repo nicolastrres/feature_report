@@ -31,22 +31,30 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
+    feature_files = []
     try:
-        if request.method == 'POST' and 'feature_file' in request.files:
-            file = request.files['feature_file']
-            if allowed_file(file.filename):
-                lines = [line.decode('utf-8') for line in file.readlines()]
-                feature = parse_feature_files.get_feature(lines)
-                scenarios = parse_feature_files.get_scenarios(lines)
-                return render_template('file_upload.html', feature=feature, scenarios=scenarios)
-            else:
-                return render_template(
-                    'index.html',
-                    error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
-    except RequestEntityTooLarge as e:
+        if request.method == 'POST':
+            for file in request.files.getlist('feature_files'):
+                if allowed_file(file.filename):
+                    lines = decode_utf8(file)
+                    feature = parse_feature_files.get_feature(lines)
+                    scenarios = parse_feature_files.get_scenarios(lines)
+                    feature_files.append((feature, scenarios))
+                else:
+                    return render_template(
+                        'index.html',
+                        error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
+
+            return render_template('file_upload.html', feature_files=feature_files)
+    except RequestEntityTooLarge:
         return render_template(
             'index.html',
             error="File too large: Please provide a file with a maximum size of 10 MB"), 400
+
+
+def decode_utf8(file):
+    return [line.decode('utf-8') for line in file.readlines()]
+
 
 def allowed_file(filename):
     return '.' in filename and \
