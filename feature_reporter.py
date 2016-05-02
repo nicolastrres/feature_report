@@ -1,6 +1,7 @@
 import re
 from jinja2 import evalcontextfilter, Markup, escape
 from flask import Flask, render_template, request
+from werkzeug.exceptions import RequestEntityTooLarge
 
 from feature_file_parser import parse_feature_files
 
@@ -30,18 +31,22 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if request.method == 'POST' and 'feature_file' in request.files:
-        file = request.files['feature_file']
-        if allowed_file(file.filename):
-            lines = [line.decode('utf-8') for line in file.readlines()]
-            feature = parse_feature_files.get_feature(lines)
-            scenarios = parse_feature_files.get_scenarios(lines)
-            return render_template('file_upload.html', feature=feature, scenarios=scenarios)
-        else:
-            return render_template(
-                'index.html',
-                error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
-
+    try:
+        if request.method == 'POST' and 'feature_file' in request.files:
+            file = request.files['feature_file']
+            if allowed_file(file.filename):
+                lines = [line.decode('utf-8') for line in file.readlines()]
+                feature = parse_feature_files.get_feature(lines)
+                scenarios = parse_feature_files.get_scenarios(lines)
+                return render_template('file_upload.html', feature=feature, scenarios=scenarios)
+            else:
+                return render_template(
+                    'index.html',
+                    error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
+    except RequestEntityTooLarge as e:
+        return render_template(
+            'index.html',
+            error="File too large: Please provide a file with a maximum size of 10 MB"), 400
 
 def allowed_file(filename):
     return '.' in filename and \
