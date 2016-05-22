@@ -35,13 +35,14 @@
         <div class="pure-menu-heading">Features</div>
         <ul class="pure-menu-list">
             {% for feature, _ in feature_files %}
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">{{ feature }}</a></li>
+                <li class="pure-menu-item"><a href="#{{ feature }}" class="pure-menu-link">{{ feature }}</a></li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="scenario-right-side pure-u-1 pure-u-md-3-5" id="scenarios">
-        {% for _ , scenario in feature_files%}
+        {% for feature, scenario in feature_files%}
+            <a name="{{ feature }}"></a>
             {% for line in scenario %}
                 <ul class="pure-menu-list">
                     {{ line | nl2br }}
