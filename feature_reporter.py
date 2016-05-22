@@ -35,7 +35,7 @@ def upload():
     feature_files = []
     try:
         if request.method == 'POST':
-            for file in request.files.getlist('feature_files[]'):
+            for file in request.files.getlist('feature_files'):
                 if allowed_file(file.filename):
                     lines = decode_utf8(file)
                     feature = parse_feature_files.get_feature(lines)

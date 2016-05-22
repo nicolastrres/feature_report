@@ -24,7 +24,7 @@
         <h1 class="title"><a href="/" class="link-no-decoration">Features Report</a></h1>
 
         <form id="upload_form" method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
-            <input id="file" type="file" name="feature_files[]" multiple>
+            <input id="file" type="file" name="feature_files" multiple>
         </form>
     </div>
     <div class="error">
