@@ -44,13 +44,13 @@ def upload():
                 else:
                     return render_template(
                         'index.html',
-                        error="Invalid file extension: Please provide a file with an extension \'.feature\'"), 400
+                        error="Invalid file extension: Please only provide files with extension \'.feature\'"), 400
 
             return render_template('file_upload.html', feature_files=feature_files)
     except RequestEntityTooLarge:
         return render_template(
             'index.html',
-            error="File too large: Please provide a file with a maximum size of 10 MB"), 400
+            error="File too large: Please provide files with a maximum size of 10 MB"), 400
 
 
 def decode_utf8(file):

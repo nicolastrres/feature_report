@@ -62,4 +62,5 @@ class FeatureReporterTestCase(unittest.TestCase):
         rv = self.app.post('/upload', data=dict(feature_files=[file]), follow_redirects=True)
 
         assert_that(rv.status_code, equal_to(400))
-        assert_that('Invalid file extension: Please provide a file with an extension &#39;.feature&#39' in str(rv.data))
+        assert_that('Invalid file extension: Please only provide files with extension &#39;.feature&#39'
+                    in str(rv.data))
