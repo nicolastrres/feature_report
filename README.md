@@ -1,5 +1,6 @@
-# Features Report [![Build Status](https://snap-ci.com/nicolastrres/feature_report/branch/master/build_image)](https://snap-ci.com/nicolastrres/feature_report/branch/master) [![Requirements Status](https://requires.io/github/nicolastrres/feature_report/requirements.svg?branch=master)](https://requires.io/github/nicolastrres/feature_report/requirements/?branch=master)
+# Features Report [![Build Status](https://snap-ci.com/nicolastrres/feature_report/branch/master/build_image)](https://snap-ci.com/nicolastrres/feature_report/branch/master)
 
+[Behaver](https://behaver.herokuapp.com)
 Create a simple report from your feature files.
 
 
