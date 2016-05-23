@@ -1,5 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/nicolastrres/feature_report.png?label=ready&title=Ready)](https://waffle.io/nicolastrres/feature_report)
-# Features Report [![Build Status](https://snap-ci.com/nicolastrres/feature_report/branch/master/build_image)](https://snap-ci.com/nicolastrres/feature_report/branch/master)
+# Features Report [![Build Status](https://snap-ci.com/nicolastrres/feature_report/branch/master/build_image)](https://snap-ci.com/nicolastrres/feature_report/branch/master) [![Stories in Ready](https://badge.waffle.io/nicolastrres/feature_report.png?label=ready&title=Ready)](https://waffle.io/nicolastrres/feature_report)
 
 [Behaver](https://behaver.herokuapp.com)
 Create a simple report from your feature files.
