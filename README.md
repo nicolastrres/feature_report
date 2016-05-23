@@ -18,6 +18,7 @@ Create a simple report from your feature files.
 5. Run `paver test_and_code_style`
 6. Push your changes and make a pull request.
 
+[![Throughput Graph](https://graphs.waffle.io/nicolastrres/feature_report/throughput.svg)](https://waffle.io/nicolastrres/feature_report/metrics/throughput)
 
 ##License 
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
